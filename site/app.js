@@ -154,10 +154,17 @@
     .then((data) => {
       contracts = data.contracts;
       renderSummary(data.summary);
-      renderChart(data.contracts, data.summary);
       renderTable();
       attachSortHandlers();
       renderOutliers();
+
+      if (typeof Chart === "undefined") {
+        document.querySelector(".chart-wrap").innerHTML =
+          "<p>Chart.js failed to load from the CDN, so the chart can't render. The rest of the dashboard is unaffected.</p>";
+        console.error("Chart.js (window.Chart) is undefined — CDN script may not have loaded.");
+        return;
+      }
+      renderChart(data.contracts, data.summary);
     })
     .catch((err) => {
       document.getElementById("summary-cards").innerHTML =
