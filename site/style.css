@@ -1,0 +1,261 @@
+:root {
+  --bg: #f7f8fa;
+  --panel-bg: #ffffff;
+  --border: #e1e4e8;
+  --text: #1a1f27;
+  --text-muted: #5a6472;
+  --accent: #2456c7;
+  --real: #0f7a3d;
+  --real-bg: #e8f7ee;
+  --synthetic: #b5460a;
+  --synthetic-bg: #fdf0e6;
+  --outlier-bg: #fff4e0;
+  --median-line: #d43f3f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+header.site-header {
+  padding: 1.5rem 1.25rem 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+header.site-header h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.7rem;
+}
+
+header.site-header p.subtitle {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  max-width: 70ch;
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.25rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.panel {
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+}
+
+.panel h2 {
+  margin-top: 0;
+  font-size: 1.15rem;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.15em 0.55em;
+  border-radius: 5px;
+  vertical-align: middle;
+}
+
+.badge-real {
+  background: var(--real-bg);
+  color: var(--real);
+  border: 1px solid var(--real);
+}
+
+.badge-synthetic {
+  background: var(--synthetic-bg);
+  color: var(--synthetic);
+  border: 1px solid var(--synthetic);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-top: 0.75rem;
+}
+
+@media (max-width: 720px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about-block {
+  border-radius: 8px;
+  padding: 1rem 1.1rem;
+}
+
+.about-block.real {
+  background: var(--real-bg);
+  border: 1px solid #b7e3c8;
+}
+
+.about-block.synthetic {
+  background: var(--synthetic-bg);
+  border: 1px solid #f0c6a3;
+}
+
+.about-block h3 {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+}
+
+.about-block ul {
+  margin: 0.5rem 0 0;
+  padding-left: 1.2rem;
+  font-size: 0.9rem;
+}
+
+.about-block p {
+  font-size: 0.9rem;
+  margin: 0.4rem 0;
+}
+
+.sources {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.sources ol {
+  padding-left: 1.2rem;
+}
+
+.sources a {
+  color: var(--accent);
+}
+
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.9rem;
+}
+
+.card {
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+}
+
+.card .label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.card .value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 0.15rem;
+}
+
+.chart-wrap {
+  position: relative;
+  height: 420px;
+}
+
+.legend-note {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: 0.6rem;
+}
+
+.legend-swatch {
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  border-radius: 2px;
+  margin-right: 0.3em;
+  vertical-align: middle;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  min-width: 640px;
+}
+
+thead th {
+  text-align: left;
+  padding: 0.55rem 0.7rem;
+  border-bottom: 2px solid var(--border);
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
+
+thead th:hover {
+  color: var(--accent);
+}
+
+thead th.sorted-asc::after {
+  content: " \25B2";
+  font-size: 0.7em;
+}
+
+thead th.sorted-desc::after {
+  content: " \25BC";
+  font-size: 0.7em;
+}
+
+tbody td {
+  padding: 0.5rem 0.7rem;
+  border-bottom: 1px solid var(--border);
+}
+
+tbody tr.outlier-row {
+  background: var(--outlier-bg);
+}
+
+.outlier-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.outlier-item {
+  border: 1px solid #f0c6a3;
+  background: var(--synthetic-bg);
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  font-size: 0.9rem;
+}
+
+.outlier-item strong {
+  color: var(--synthetic);
+}
+
+footer {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.25rem 2rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
