@@ -3,8 +3,7 @@
 A static, zero-backend dashboard visualizing Medicare Advantage
 prior-authorization denial-rate variance across 61 insurer contracts.
 
-**➡️ Live site:** enable GitHub Pages (see [Deploying](#deploying) below) and
-the URL will be `https://<your-username>.github.io/PA-Governance-Radar/`.
+**➡️ Live site:** https://siddharth-14.github.io/PA-Governance-Radar/
 
 ## Real data vs. synthetic data — read this first
 
@@ -91,27 +90,6 @@ python3 -m http.server 8000
 `site/app.js` fetches the already-committed `data/stats.json` and renders a
 [Chart.js](https://www.chartjs.org/) (loaded from cdnjs, no npm install)
 bar chart, a sortable table, and the outlier explanation blocks.
-
-## Deploying
-
-This repo ships a GitHub Actions workflow
-(`.github/workflows/pages.yml`) that publishes the `site/` directory to
-GitHub Pages on every push to `main` — free, no CLI, no paid tier.
-
-Because GitHub Pages' "deploy from branch" mode can only serve the repo
-root or a `/docs` folder (not an arbitrary `/site` directory), this repo
-uses the standard Actions-based Pages deployment instead, which supports
-publishing any folder.
-
-One-time manual step (cannot be done via `git push` alone):
-
-1. Go to **Settings → Pages** in the GitHub repo.
-2. Under **Source**, select **GitHub Actions**.
-3. Push (or merge) to `main` — the `pages.yml` workflow runs automatically
-   and publishes `site/` to `https://<your-username>.github.io/<repo>/`.
-
-No API keys, no paid services, and no server are involved anywhere in this
-pipeline.
 
 ## Stretch goal (out of scope, not implemented here): a real scraper
 
